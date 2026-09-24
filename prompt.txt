@@ -1,0 +1,1672 @@
+# KOORDİNAT COFFEE FACTORY — CINEMATIC INTERACTIVE WEBSITE
+
+Create a premium, cinematic, highly interactive single-page website for **Koordinat Coffee Factory**, a modern coffee house in Samandağ, Hatay, Türkiye.
+
+The website must feel like a **high-end coffee brand / coffee film / editorial experience**, not like a generic restaurant website.
+
+The primary goal is to make visitors immediately feel:
+
+**coffee · warmth · craft · atmosphere · taste · community · Samandağ**
+
+The website should have a strong **WOW effect** through cinematic transitions, coffee-related motion, elegant typography, immersive imagery/video, subtle parallax, liquid/steam effects and carefully choreographed scroll interactions.
+
+Do NOT create a generic cafe template.
+
+Do NOT use excessive cards, generic gradients, stock SaaS layouts, dashboard-style UI, excessive rounded rectangles or childish coffee illustrations.
+
+The visual language should feel closer to:
+
+**premium specialty coffee brand + editorial magazine + cinematic product film + modern Turkish coffee house.**
+
+---
+
+# 1. TECHNOLOGY
+
+Build the website using:
+
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+* Framer Motion
+* Lucide React
+
+Use semantic HTML and accessible interactions.
+
+Structure the application into reusable sections/components:
+
+* Navbar
+* HeroSection
+* CoffeeExperienceSection
+* SignatureMenuSection
+* AtmosphereSection
+* CoffeeStorySection
+* LoyaltySection
+* LocationSection
+* Footer
+
+Use clean component architecture.
+
+Avoid unnecessary dependencies.
+
+---
+
+# 2. BRAND
+
+Brand:
+
+**Koordinat Coffee Factory**
+
+Location:
+
+**Samandağ, Hatay, Türkiye**
+
+Instagram:
+
+https://www.instagram.com/koordinatcoffeetr/?hl=en
+
+Facebook:
+
+https://www.facebook.com/koordinatcoffe/
+
+The brand should feel:
+
+* modern
+* warm
+* sophisticated
+* youthful
+* social
+* premium but approachable
+* local but not old-fashioned
+* coffee-first
+* experience-driven
+
+Do not make the brand look like a luxury hotel.
+
+Do not make it look like a traditional Turkish restaurant.
+
+Do not make it look like a generic American coffee chain.
+
+The design should communicate that this is a **real place people want to visit, sit, drink coffee, eat something, study, work and spend time.**
+
+---
+
+# 3. CORE CREATIVE CONCEPT
+
+The central creative idea is:
+
+## "Find Your Coordinates."
+
+Use the name **Koordinat** as a visual concept.
+
+The website should subtly use:
+
+* coordinates
+* location markers
+* horizontal/vertical measurement lines
+* grid systems
+* map-inspired micro details
+* crosshair / coordinate indicators
+* subtle x/y axis animations
+* geographic coordinates
+* small technical labels
+
+But do NOT turn the website into a map website.
+
+These details should be extremely subtle and editorial.
+
+Example micro labels:
+
+`36° 05' N`
+
+`35° 58' E`
+
+`SAMANDAĞ / HATAY`
+
+`COFFEE / FOOD / COMMUNITY`
+
+`OPEN DAILY`
+
+The coordinate system should become part of the brand identity.
+
+---
+
+# 4. DESIGN DIRECTION
+
+Overall visual direction:
+
+**Dark espresso editorial aesthetic.**
+
+Primary background:
+
+`#15110E`
+
+Secondary:
+
+`#211A15`
+
+Coffee brown:
+
+`#5A3825`
+
+Espresso:
+
+`#2A1B14`
+
+Warm cream:
+
+`#F4EBDD`
+
+Coffee foam:
+
+`#E8D8C3`
+
+Muted text:
+
+`#A99A8A`
+
+Accent:
+
+`#B98A5A`
+
+Optional subtle green accent inspired by coffee plants:
+
+`#6F8064`
+
+Use colors carefully.
+
+The page should primarily use:
+
+* dark espresso backgrounds
+* warm cream typography
+* subtle brown gradients
+* natural coffee colors
+* soft amber highlights
+
+Avoid:
+
+* neon colors
+* purple gradients
+* blue SaaS aesthetics
+* excessive pure white
+* excessive glassmorphism
+
+---
+
+# 5. TYPOGRAPHY
+
+Use a sophisticated serif + modern sans combination.
+
+Display / hero:
+
+**Instrument Serif**
+
+Body:
+
+**Inter**
+
+Small technical labels:
+
+**Inter**
+
+Use:
+
+* Instrument Serif for large emotional headlines
+* Inter for navigation and body copy
+* uppercase Inter with letter spacing for technical labels
+
+Typography should create strong contrast.
+
+Example:
+
+`COFFEE`
+
+small uppercase sans-serif
+
+then:
+
+`made to slow you down.`
+
+large Instrument Serif
+
+Use generous letter spacing and large negative tracking where appropriate.
+
+---
+
+# 6. NAVIGATION
+
+Create a floating minimal navigation.
+
+Desktop:
+
+Left:
+
+**KOORDİNAT**
+
+small logo / wordmark.
+
+Center:
+
+* Menü
+* Hikayemiz
+* Deneyim
+* Konum
+
+Right:
+
+**MASA AYIRT / BİZE ULAŞ**
+
+Use a minimal pill button.
+
+Navigation should initially be transparent over the hero.
+
+As the user scrolls:
+
+* navbar becomes slightly darker
+* background gets a subtle espresso blur
+* border appears
+* transition lasts 400ms
+* logo changes from light cream to warm cream if required
+
+Navbar must remain visually lightweight.
+
+Do not create a huge navbar.
+
+---
+
+# 7. HERO — CINEMATIC COFFEE OPENING
+
+The hero must occupy approximately:
+
+`100vh`
+
+The first screen must immediately create the WOW effect.
+
+Background:
+
+Full-screen cinematic coffee footage.
+
+Preferred footage:
+
+* espresso extraction
+* coffee beans falling
+* coffee being ground
+* espresso crema
+* milk pouring into coffee
+* steam rising from a cup
+* close-up coffee texture
+* barista hands
+* warm cafe interior
+
+Use a video layer:
+
+```html
+<video
+  muted
+  autoPlay
+  playsInline
+  loop
+  preload="auto"
+/>
+```
+
+The video must cover the entire viewport.
+
+Use:
+
+```css
+object-fit: cover;
+object-position: center;
+```
+
+Add multiple cinematic overlays:
+
+1. black/espresso gradient from top
+2. transparent center
+3. dark gradient at bottom
+4. subtle warm brown overlay
+
+Do not make the overlay too dark.
+
+The coffee texture must remain visible.
+
+---
+
+# 8. HERO CONTENT
+
+Place content slightly below center.
+
+Small eyebrow:
+
+`SAMANDAĞ / HATAY`
+
+Large headline:
+
+**Coffee, at your coordinates.**
+
+Highlight:
+
+`coordinates.`
+
+using Instrument Serif italic or warm brown accent.
+
+Alternative supporting line:
+
+**A place for coffee, conversations and slow moments.**
+
+Body:
+
+**Koordinat Coffee Factory brings coffee, food and community together in the heart of Samandağ.**
+
+CTA:
+
+**EXPLORE KOORDİNAT**
+
+Secondary text CTA:
+
+**FIND US**
+
+The primary CTA should be a cream pill.
+
+Hover:
+
+* scale 1.03
+* background slightly brighter
+* subtle shadow
+* arrow moves 4px right
+
+---
+
+# 9. HERO COORDINATE SYSTEM
+
+Add a subtle coordinate overlay.
+
+Top-left:
+
+`KCF / 001`
+
+Top-right:
+
+`SAMANDAĞ`
+
+Bottom-left:
+
+`36° 05' N / 35° 58' E`
+
+Bottom-right:
+
+`COFFEE FACTORY`
+
+These elements should be tiny.
+
+Use opacity between:
+
+`0.35 - 0.6`
+
+Add thin horizontal and vertical lines.
+
+The grid should slowly move by 1–3px with mouse movement.
+
+Do not make it distracting.
+
+---
+
+# 10. HERO MOTION
+
+Use Framer Motion.
+
+Entrance sequence:
+
+1. Background video fades from 0 → 1
+2. Coordinate lines draw from center
+3. Navbar fades upward
+4. Eyebrow rises from 20px
+5. Hero headline reveals through a vertical mask
+6. Supporting text rises
+7. CTA scales from 0.96 → 1
+8. Coordinate labels fade in
+9. Scroll indicator appears last
+
+Timing:
+
+Background:
+
+`1.4s`
+
+Headline:
+
+`1.0s`
+
+Body:
+
+`0.7s`
+
+CTA:
+
+`0.7s`
+
+Use:
+
+```js
+cubic-bezier(.16,1,.3,1)
+```
+
+for major reveals.
+
+Avoid generic fade-only animations.
+
+Use:
+
+* mask reveals
+* translateY
+* opacity
+* scale
+* line drawing
+
+---
+
+# 11. HERO MOUSE PARALLAX
+
+On desktop only.
+
+Track mouse position.
+
+Move background video:
+
+approximately:
+
+`±8px`
+
+Move coordinate grid:
+
+approximately:
+
+`±12px`
+
+Move decorative coffee elements:
+
+approximately:
+
+`±18px`
+
+Hero typography:
+
+approximately:
+
+`±4px`
+
+Everything must move subtly.
+
+Never create exaggerated motion.
+
+On mobile:
+
+Disable mouse parallax.
+
+---
+
+# 12. SCROLL INDICATOR
+
+At the bottom center:
+
+Small circular/vertical indicator.
+
+Text:
+
+`SCROLL TO EXPLORE`
+
+Arrow icon.
+
+Animate:
+
+* opacity
+* vertical movement
+* subtle infinite pulse
+
+The animation must be extremely subtle.
+
+---
+
+# 13. SECTION — THE KOORDİNAT EXPERIENCE
+
+Transition from dark hero into a warm cream section.
+
+Background:
+
+`#F4EBDD`
+
+Layout:
+
+Large editorial headline on the left.
+
+Right side:
+
+Large atmospheric coffee image/video.
+
+Eyebrow:
+
+`THE EXPERIENCE`
+
+Headline:
+
+**Not just coffee.
+A place to pause.**
+
+Body:
+
+**Some moments are better when they slow down. From the first espresso of the morning to conversations that last longer than expected, Koordinat is designed around the moments between things.**
+
+Add a small coordinate label:
+
+`SAMANDAĞ / 01`
+
+---
+
+# 14. IMAGE / VIDEO INTERACTION
+
+The image/video should initially be slightly desaturated.
+
+When entering viewport:
+
+* image scale 1.08 → 1
+* saturation 0.7 → 1
+* opacity 0 → 1
+
+On hover:
+
+* scale 1.04
+* subtle warm color shift
+
+Overlay:
+
+small label:
+
+`THE DAILY RITUAL`
+
+---
+
+# 15. COFFEE STORY SECTION
+
+Create a dark section.
+
+Headline:
+
+**From bean
+to moment.**
+
+Use a large serif headline.
+
+Add a horizontal coffee process timeline:
+
+1. BEAN
+2. GRIND
+3. EXTRACTION
+4. POUR
+5. SIP
+
+Each step should become active while scrolling.
+
+Use a horizontal progress line.
+
+The active point should glow subtly in warm amber.
+
+When the active step changes:
+
+* image changes
+* title changes
+* description changes
+* background texture changes
+
+Do not reload the page.
+
+---
+
+# 16. COFFEE PROCESS CONTENT
+
+### BEAN
+
+Label:
+
+`01 / BEAN`
+
+Headline:
+
+**The beginning matters.**
+
+Description:
+
+**Every cup begins with the character of the bean.**
+
+Visual:
+
+macro coffee bean footage.
+
+---
+
+### GRIND
+
+Label:
+
+`02 / GRIND`
+
+Headline:
+
+**Precision creates balance.**
+
+Description:
+
+**The grind sets the rhythm for everything that follows.**
+
+Visual:
+
+coffee grinder / grounds.
+
+---
+
+### EXTRACTION
+
+Label:
+
+`03 / EXTRACTION`
+
+Headline:
+
+**Pressure. Time. Balance.**
+
+Description:
+
+**A few seconds can change everything.**
+
+Visual:
+
+espresso extraction.
+
+---
+
+### POUR
+
+Label:
+
+`04 / POUR`
+
+Headline:
+
+**Watch the texture change.**
+
+Description:
+
+**Crema, milk, steam and movement come together.**
+
+Visual:
+
+latte / milk pouring.
+
+---
+
+### SIP
+
+Label:
+
+`05 / SIP`
+
+Headline:
+
+**Then everything slows down.**
+
+Description:
+
+**The final step is simply enjoying it.**
+
+Visual:
+
+person drinking coffee / table atmosphere.
+
+---
+
+# 17. SIGNATURE MENU SECTION
+
+Create a visually striking menu section.
+
+Do NOT use generic restaurant cards.
+
+Instead create an editorial horizontal menu experience.
+
+Background:
+
+warm cream.
+
+Headline:
+
+**Made for your mood.**
+
+Subheading:
+
+`COFFEE / FOOD / SWEET`
+
+Create three large categories.
+
+---
+
+## COFFEE
+
+Show large close-up coffee imagery.
+
+Items can include:
+
+* Espresso
+* Americano
+* Latte
+* Cappuccino
+* Turkish Coffee
+* Cold Coffee
+
+Do not invent prices.
+
+If pricing data is unavailable, do not display prices.
+
+---
+
+## FOOD
+
+Show atmospheric food imagery.
+
+Items can include:
+
+* sandwiches
+* burgers
+* pasta
+* breakfast / snacks
+
+Use generic category descriptions unless exact menu data is supplied.
+
+---
+
+## SWEET
+
+Show dessert imagery.
+
+Examples:
+
+* cheesecake
+* tiramisu
+* brownie
+* cookies
+
+Again, do not invent prices.
+
+---
+
+# 18. MENU HOVER EFFECT
+
+Each category should behave like a large editorial panel.
+
+When hovered:
+
+* image scales 1.06
+* overlay becomes slightly darker
+* category title moves upward 8px
+* arrow rotates / moves right
+* small coordinate number appears
+
+Example:
+
+`01`
+
+`COFFEE`
+
+`EXPLORE`
+
+The transition should take:
+
+`500–700ms`
+
+with:
+
+```css
+cubic-bezier(.22,1,.36,1)
+```
+
+---
+
+# 19. "THE PLACE" CINEMATIC SECTION
+
+Create a full-width immersive image/video section.
+
+This section should communicate the actual cafe atmosphere.
+
+Visual content:
+
+* interior
+* tables
+* warm lights
+* coffee cups
+* people talking
+* barista
+* laptop / studying
+* evening atmosphere
+
+Headline overlay:
+
+**Come for the coffee.
+Stay for the moment.**
+
+Small label:
+
+`KOORDİNAT COFFEE FACTORY`
+
+Add subtle grain texture.
+
+---
+
+# 20. ATMOSPHERE PARALLAX
+
+The image should have a slow parallax effect while scrolling.
+
+Image:
+
+`translateY(-4% → 4%)`
+
+Text:
+
+`translateY(20px → -20px)`
+
+Do not use aggressive parallax.
+
+The section should feel like a cinematic film frame.
+
+---
+
+# 21. COMMUNITY SECTION
+
+Koordinat should feel like a place where people spend time.
+
+Create an editorial section:
+
+Eyebrow:
+
+`MORE THAN COFFEE`
+
+Headline:
+
+**Your table.
+Your people.
+Your moment.**
+
+Create 3 large vertical images:
+
+* Friends
+* Study / work
+* Coffee conversation
+
+Each image should have a small caption.
+
+Examples:
+
+`MORNING`
+
+`AFTERNOON`
+
+`EVENING`
+
+Use subtle hover zoom.
+
+---
+
+# 22. LOYALTY / PAPAĞAN SECTION
+
+Koordinat has a loyalty concept called:
+
+**Papağan**
+
+Create a playful but premium section for the loyalty program.
+
+Do NOT make it childish.
+
+Background:
+
+deep espresso.
+
+Headline:
+
+**Coffee rewards,
+the Koordinat way.**
+
+Show a premium loyalty card / stamp interface.
+
+Concept:
+
+**5 coffee stamps → free coffee**
+
+Use a visual stamp animation.
+
+Five circular coffee-stamp positions.
+
+When hovered:
+
+* stamp fills
+* small particle effect
+* subtle coffee ring animation
+
+After the fifth stamp:
+
+display:
+
+**ONE MORE COFFEE. ON US.**
+
+CTA:
+
+**JOIN PAPAĞAN**
+
+Keep the design premium and minimal.
+
+---
+
+# 23. MOBILE LOYALTY INTERACTION
+
+On mobile:
+
+The five stamps should fit horizontally.
+
+Touch interaction:
+
+tap stamp → fill animation.
+
+Do not create horizontal page overflow.
+
+---
+
+# 24. LOCATION SECTION
+
+Create a dramatic location section.
+
+Headline:
+
+**Find your coordinates.**
+
+Large:
+
+`SAMANDAĞ`
+
+Small:
+
+`HATAY / TÜRKİYE`
+
+Use a stylized dark map-inspired background.
+
+Do NOT embed a generic Google Maps iframe as the main visual.
+
+Instead create a custom editorial map-like composition.
+
+Show:
+
+`KOORDİNAT COFFEE FACTORY`
+
+with a glowing coordinate point.
+
+Address:
+
+**Samandağ, Hatay**
+
+Include CTA:
+
+**GET DIRECTIONS**
+
+Secondary:
+
+**INSTAGRAM**
+
+Link to:
+
+https://www.instagram.com/koordinatcoffeetr/?hl=en
+
+---
+
+# 25. LOCATION MICRO-ANIMATION
+
+The map coordinate point should pulse.
+
+Create:
+
+* small dot
+* expanding ring
+* second faint ring
+* coordinate crosshair
+
+Loop duration:
+
+`2.5s`
+
+very subtle.
+
+---
+
+# 26. FINAL CTA
+
+The final section should be extremely cinematic.
+
+Background:
+
+dark espresso.
+
+A large coffee cup / espresso macro video or image.
+
+Centered headline:
+
+**Your next coffee
+has a coordinate.**
+
+Under it:
+
+`KOORDİNAT COFFEE FACTORY`
+
+Primary button:
+
+**VISIT KOORDİNAT**
+
+Secondary:
+
+**FOLLOW US**
+
+Use large Instrument Serif typography.
+
+---
+
+# 27. FOOTER
+
+Minimal footer.
+
+Logo:
+
+**KOORDİNAT COFFEE FACTORY**
+
+Links:
+
+* Instagram
+* Facebook
+* Location
+* Menu
+
+Instagram:
+
+https://www.instagram.com/koordinatcoffeetr/?hl=en
+
+Facebook:
+
+https://www.facebook.com/koordinatcoffe/
+
+Footer metadata:
+
+`SAMANDAĞ / HATAY`
+
+`COFFEE / FOOD / COMMUNITY`
+
+`© KOORDİNAT COFFEE FACTORY`
+
+Use a thin horizontal line.
+
+---
+
+# 28. SPECIAL COFFEE CURSOR
+
+Desktop only.
+
+Create a custom cursor.
+
+Default:
+
+small cream circle.
+
+When hovering interactive elements:
+
+expand to approximately:
+
+`48px`
+
+Show:
+
+`VIEW`
+
+or
+
+`OPEN`
+
+When hovering coffee imagery:
+
+show:
+
+`DISCOVER`
+
+When hovering CTA:
+
+show:
+
+`GO`
+
+Use smooth spring animation.
+
+Disable on touch devices.
+
+---
+
+# 29. COFFEE PARTICLE EFFECT
+
+Create an extremely subtle floating particle system.
+
+Particles should resemble:
+
+* coffee dust
+* steam particles
+* tiny warm particles
+
+NOT stars.
+
+Use approximately:
+
+15–25 particles.
+
+They should move slowly.
+
+Opacity:
+
+`0.05 – 0.18`
+
+Do not make them visually dominant.
+
+---
+
+# 30. STEAM EFFECT
+
+In hero or coffee sections, where appropriate, create subtle CSS steam.
+
+Use 2–3 blurred curved elements.
+
+Animation:
+
+* translateY
+* scale
+* opacity
+
+Duration:
+
+`3–5s`
+
+Different delays.
+
+The steam must feel natural.
+
+Avoid cartoon smoke.
+
+---
+
+# 31. COFFEE RING MICRO INTERACTION
+
+When clicking or hovering certain coffee-related CTA elements, create a subtle coffee-ring effect.
+
+A circular warm translucent ring expands outward.
+
+Opacity:
+
+0.25 → 0
+
+Scale:
+
+0.6 → 1.5
+
+Duration:
+
+700ms
+
+This should be used sparingly.
+
+---
+
+# 32. SCROLL ANIMATION SYSTEM
+
+Use Framer Motion `useInView`.
+
+Every major section should reveal only once.
+
+Use:
+
+```js
+initial={{ opacity: 0, y: 40 }}
+whileInView={{ opacity: 1, y: 0 }}
+viewport={{ once: true, margin: "-100px" }}
+transition={{
+  duration: 0.8,
+  ease: [0.16, 1, 0.3, 1]
+}}
+```
+
+For large editorial headlines:
+
+Use masked text reveal.
+
+For images:
+
+Use:
+
+`scale: 1.08 → 1`
+
+For lines:
+
+Use:
+
+`scaleX(0) → scaleX(1)`
+
+---
+
+# 33. TEXT REVEAL
+
+Large headlines should NOT simply fade in.
+
+Create a mask.
+
+Example:
+
+```css
+overflow: hidden;
+```
+
+Inner text:
+
+```css
+transform: translateY(110%);
+```
+
+Animate to:
+
+```css
+transform: translateY(0);
+```
+
+Use:
+
+`0.8–1.0s`
+
+with:
+
+```css
+cubic-bezier(.16,1,.3,1)
+```
+
+---
+
+# 34. IMAGE REVEAL
+
+Every major image should have a cinematic reveal.
+
+Initial:
+
+```css
+clip-path: inset(8% 8% 8% 8%);
+transform: scale(1.08);
+opacity: .7;
+```
+
+Final:
+
+```css
+clip-path: inset(0 0 0 0);
+transform: scale(1);
+opacity: 1;
+```
+
+Duration:
+
+`1.0s`
+
+---
+
+# 35. SECTION TRANSITIONS
+
+Do not make every section simply stack vertically.
+
+Use different visual rhythms:
+
+Hero:
+
+full-screen cinematic
+
+Experience:
+
+cream editorial
+
+Coffee story:
+
+dark immersive
+
+Menu:
+
+cream
+
+Atmosphere:
+
+full-screen image
+
+Community:
+
+light editorial
+
+Loyalty:
+
+dark
+
+Location:
+
+dark/map
+
+Final CTA:
+
+cinematic dark
+
+This creates a premium visual journey.
+
+---
+
+# 36. BACKGROUND TRANSITIONS
+
+Use subtle background-color transitions between sections.
+
+Avoid hard visual cuts where possible.
+
+Use:
+
+* dark espresso
+* coffee brown
+* warm cream
+
+The entire page should feel like one continuous visual story.
+
+---
+
+# 37. RESPONSIVE DESIGN
+
+Desktop:
+
+`1440px+`
+
+Use large cinematic compositions.
+
+Tablet:
+
+`768px–1439px`
+
+Reduce:
+
+* typography
+* spacing
+* image heights
+* coordinate decorations
+
+Mobile:
+
+`320px–767px`
+
+Completely redesign the composition where necessary.
+
+Do NOT simply shrink the desktop version.
+
+On mobile:
+
+* Hero remains full-screen
+* typography becomes responsive
+* navigation becomes hamburger
+* side decorative elements disappear
+* coordinate grid becomes much more subtle
+* videos remain performant
+* menu sections stack vertically
+* horizontal interactions become vertical
+* custom cursor disabled
+* heavy parallax disabled
+
+---
+
+# 38. MOBILE HERO
+
+Mobile hero should contain:
+
+`SAMANDAĞ / HATAY`
+
+large:
+
+**Coffee,
+at your coordinates.**
+
+short description.
+
+CTA.
+
+Background coffee video.
+
+Use `100dvh`.
+
+Respect:
+
+`env(safe-area-inset-top)`
+
+and
+
+`env(safe-area-inset-bottom)`.
+
+---
+
+# 39. PERFORMANCE
+
+This is extremely important.
+
+Optimize for:
+
+* mobile Safari
+* iPhone
+* Android
+* mid-range devices
+
+Videos:
+
+* muted
+* autoplay
+* playsInline
+* lazy-load below-fold videos
+* preload only hero video
+* use poster images
+* pause videos when not visible
+
+Use IntersectionObserver for below-fold videos.
+
+Do not load every video immediately.
+
+Use `loading="lazy"` for images where appropriate.
+
+Do not create huge JS animation loops.
+
+Prefer Framer Motion and CSS transforms.
+
+Animate only:
+
+* transform
+* opacity
+* clip-path where necessary
+
+Avoid layout-triggering animation.
+
+---
+
+# 40. REDUCED MOTION
+
+Support:
+
+```css
+@media (prefers-reduced-motion: reduce)
+```
+
+When enabled:
+
+* disable parallax
+* disable steam animation
+* disable particle animation
+* disable cursor animation
+* disable large entrance transitions
+* disable automatic decorative motion
+* videos may remain visible but should not aggressively animate UI
+
+Content must remain fully usable.
+
+---
+
+# 41. ACCESSIBILITY
+
+Use semantic HTML.
+
+Buttons must be real buttons.
+
+Links must be real links.
+
+Images require meaningful alt text when informative.
+
+Decorative images:
+
+`alt=""`
+
+Videos:
+
+`aria-hidden="true"` where decorative.
+
+Visible focus states.
+
+Keyboard navigation.
+
+Minimum interactive target:
+
+`44px`.
+
+Do not sacrifice accessibility for animation.
+
+---
+
+# 42. NO GENERIC UI
+
+Absolutely avoid:
+
+* generic SaaS cards
+* pricing tables
+* excessive rounded cards
+* huge gradients
+* stock coffee clipart
+* coffee bean icons everywhere
+* emoji
+* generic hamburger animations
+* excessive shadows
+* excessive glassmorphism
+* excessive borders
+* template-like sections
+
+The site should look **art-directed**.
+
+---
+
+# 43. VISUAL DETAILS
+
+Add subtle details such as:
+
+`KCF / 001`
+
+`COFFEE FACTORY`
+
+`SAMANDAĞ`
+
+`EST. / CURRENT BRAND DATA ONLY`
+
+`COORDINATE YOUR MOMENT`
+
+`ESPRESSO / LATTE / TURKISH COFFEE`
+
+Use these sparingly as editorial micro typography.
+
+---
+
+# 44. IMPORTANT CONTENT RULE
+
+Do not invent:
+
+* prices
+* awards
+* years of establishment
+* number of customers
+* fake statistics
+* fake claims
+* fake coffee origins
+* fake certifications
+* fake awards
+* fake testimonials
+
+If exact business data is not supplied, use atmospheric brand copy instead.
+
+The website should feel authentic rather than fabricated.
+
+---
+
+# 45. SOCIAL LINKS
+
+Instagram:
+
+https://www.instagram.com/koordinatcoffeetr/?hl=en
+
+Facebook:
+
+https://www.facebook.com/koordinatcoffe/
+
+Use these links as actual anchors.
+
+---
+
+# 46. FINAL VISUAL IMPRESSION
+
+The visitor experience should feel like:
+
+1. Entering a dark coffee film
+2. Seeing the brand emerge from the darkness
+3. Discovering the Koordinat concept
+4. Feeling the coffee-making process
+5. Exploring the menu visually
+6. Experiencing the cafe atmosphere
+7. Discovering the loyalty experience
+8. Finding the physical location
+9. Ending with a strong invitation to visit
+
+The website should communicate:
+
+**"This is not just somewhere you buy coffee.
+This is somewhere you spend time."**
+
+---
+
+# 47. FINAL ACCEPTANCE CRITERIA
+
+The implementation is complete only if:
+
+* The first viewport immediately feels cinematic.
+* Coffee is visually present from the first second.
+* The hero has a clear WOW moment.
+* Animations feel intentional and premium.
+* No section feels like a generic template.
+* Typography has strong editorial hierarchy.
+* Coordinate / location concept appears throughout the experience.
+* Coffee imagery and atmosphere dominate the visual language.
+* Scroll animations are smooth.
+* Desktop and mobile compositions feel intentionally designed.
+* Mobile has no horizontal overflow.
+* Videos do not destroy performance.
+* Reduced-motion mode works.
+* All social links work.
+* No fake business claims or fabricated pricing are included.
+* CTA buttons are visually obvious but not aggressive.
+* The page feels like a real premium coffee brand rather than an AI-generated restaurant template.
+
+Most importantly:
+
+**PRIORITIZE VISUAL QUALITY, CINEMATIC MOTION, TYPOGRAPHY, COFFEE ATMOSPHERE AND BRAND STORY OVER INFORMATION DENSITY.**
+
+The result should be a website that makes someone in Samandağ immediately think:
+
+**"I want to go there and have a coffee."**

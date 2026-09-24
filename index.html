@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!--seo: title, description, canonical, hreflang, Open Graph and JSON-LD come from src/seo.ts-->
+    <meta name="theme-color" content="#15110E" />
+    <meta name="application-name" content="Koordinat Coffee" />
+    <meta name="apple-mobile-web-app-title" content="Koordinat Coffee" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <!-- arriving through the page curtain: keep the screen covered until the curtain mounts -->
+    <script>
+      try {
+        if (sessionStorage.getItem("kcf-curtain") === "1") document.documentElement.setAttribute("data-curtain", "");
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
