@@ -32,6 +32,15 @@ npm run preview    # derlenmiş siteyi yerelde aç
 - **Çalışma saatleri:** `site.config.mjs` → `hours` (iki şube için ortak).
 - **Görseller:** `public/media/` altındaki dosyaları aynı adla değiştirmeniz yeterli.
 
+## SEO
+
+- **Önceden render (prerender):** `npm run build` her sayfayı statik HTML olarak üretir (`src/entry-server.tsx` +
+  `scripts/prerender.mjs`); tarayıcı bu HTML'i hidrate eder. Google ve link önizlemeleri içeriği JS çalıştırmadan görür.
+- **Başlık / açıklama:** `src/routes.ts`. Her başlık "Koordinat Coffee" markasını içerir.
+- **Meta, hreflang, Open Graph, JSON-LD, sitemap:** `src/seo.ts` — Organization, WebSite, 2 × CafeOrCoffeeShop,
+  Menu, FAQPage, MobileApplication ve BreadcrumbList. Marka varyasyonları `ALT_NAMES` listesinde.
+- **SSS:** `src/content/faq.ts` — iletişim sayfasında görünür ve FAQPage verisine dönüşür.
+
 ## Yayınlama (Vercel)
 
 `vercel.json` hazır: build `npm run build`, çıktı `dist`. Eski Türkçe adresler (`/gizlilik/`, `/kvkk/` …) yeni
