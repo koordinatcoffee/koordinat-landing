@@ -16,6 +16,7 @@ export const FACEBOOK = config.facebook;
 // ---------------------------------------------------------------- branches
 export type Branch = {
   id: string;
+  slug: string;
   name: string;
   area: string;
   address: string;
@@ -23,6 +24,12 @@ export type Branch = {
   lat: number;
   lng: number;
   mapsUrl: string;
+  note: string;
+  noteTr: string;
+  about: string;
+  aboutTr: string;
+  /** name of the clip in public/media (…/<video>.mp4 + .jpg) used on the branch page */
+  video: string;
 };
 
 /** 36.0812993 → 36° 04' 53" */
@@ -41,6 +48,8 @@ function dms(v: number) {
 export const branches = (config.branches as Branch[]).map((b, i) => ({
   ...b,
   n: String(i + 1).padStart(2, "0"),
+  /** route key of the branch page (src/routes.ts) */
+  route: `branch:${b.id}` as const,
   full: `${b.address}, ${b.postcode} ${c.district} / ${c.city}`,
   dms: { lat: `${dms(b.lat)} N`, lng: `${dms(b.lng)} E` },
 }));

@@ -18,41 +18,65 @@ export type RouteKey =
   | "privacy"
   | "kvkk"
   | "cookies"
-  | "terms";
+  | "terms"
+  | "guide"
+  | `branch:${string}`;
 
 type Meta = { path: string; title: string; description: string };
-export type RouteDef = { key: RouteKey; legal?: boolean } & Record<Lang, Meta>;
+/** `branch` = id of the branch in site.config.mjs (branch pages only). */
+export type RouteDef = { key: RouteKey; legal?: boolean; branch?: string } & Record<Lang, Meta>;
 
-// Every title starts or ends with the brand so "koordinat…" searches match on every page;
-// the home, menu and contact titles also carry the local terms (Samandağ / Hatay / kafe).
+// Keyword map (Google autocomplete TR + Google Trends, Sep 2026):
+//  brand   → "koordinat cafe" (most typed), "koordinat coffee factory", "koordinat cafe samandağ"
+//  menu    → "koordinat coffee menü", "koordinat cafe menü", "koordinat coffee samandağ menüsü"
+//  local   → "samandağ cafe" (> "samandağ kafe"), "samandağ kafeler", "samandağ kahve mekanları",
+//            "samandağ kahvaltı yerleri", "samandağ açık kafeler", "samandağ mekan önerileri"
+//  region  → "samandağda gezilecek yerler", "samandağda ne yenir", "samandağ çevlik"
+// Every title carries the brand; "Cafe" is the spelling people search, not "Kafe".
 const S = " | Koordinat Coffee";
 const OPEN = `${config.hours.open}–${config.hours.close}`;
+
+type BranchCfg = { id: string; slug: string; name: string; area: string; address: string; note: string; noteTr: string };
+const BRANCH_ROUTES: RouteDef[] = (config.branches as BranchCfg[]).map((b) => ({
+  key: `branch:${b.id}`,
+  branch: b.id,
+  en: {
+    path: `/branches/${b.slug}/`,
+    title: `${b.name} ${b.area} | Café in Samandağ, Hatay`,
+    description: `${b.name}, ${b.area} branch: ${b.address}, Samandağ. ${b.note}. Open daily ${OPEN} for coffee, breakfast and desserts — directions, menu and contact.`,
+  },
+  tr: {
+    path: `/tr/subeler/${b.slug}/`,
+    title: `${b.name} ${b.area} Şubesi | Samandağ Cafe, Hatay`,
+    description: `${b.name} ${b.area} şubesi: ${b.address}, Samandağ. ${b.noteTr}. Her gün ${OPEN} kahve, kahvaltı ve tatlı; yol tarifi, menü ve iletişim.`,
+  },
+}));
 
 export const ROUTES: RouteDef[] = [
   {
     key: "home",
     en: {
       path: "/",
-      title: "Koordinat Coffee | Coffee House in Samandağ, Hatay",
-      description: `Koordinat Coffee Factory — two coffee houses in Samandağ, Hatay: Çiğdede by the sea and Atatürk. Open daily ${OPEN} for coffee, breakfast and desserts. Order ahead in the app.`,
+      title: "Koordinat Coffee Samandağ | Café, Coffee & Breakfast · Hatay",
+      description: `Koordinat Coffee (Koordinat Cafe) — two coffee houses in Samandağ, Hatay: Koordinat Coffee Factory in Çiğdede by the sea and Atatürk. Open daily ${OPEN}.`,
     },
     tr: {
       path: "/tr/",
-      title: "Koordinat Coffee | Samandağ Kafe, Kahve ve Kahvaltı · Hatay",
-      description: `Koordinat Coffee Factory, Samandağ'da iki şube: denize yakın Çiğdede ve Atatürk. Her gün ${OPEN} kahve, kahvaltı ve tatlı. Uygulamadan sipariş ver, sıra bekleme.`,
+      title: "Koordinat Coffee Samandağ | Cafe, Kahve ve Kahvaltı · Hatay",
+      description: `Koordinat Coffee (Koordinat Cafe) Samandağ'da iki şube: denize yakın Çiğdede'de Koordinat Coffee Factory ve Atatürk. Her gün ${OPEN} kahve, kahvaltı, tatlı.`,
     },
   },
   {
     key: "menu",
     en: {
       path: "/menu/",
-      title: `Menu & Prices${S} Samandağ`,
+      title: "Koordinat Coffee Menu & Prices | Café Menu in Samandağ",
       description: "Koordinat Coffee menu: espresso, Turkish coffee, cold brew, breakfast, burgers, pasta and desserts in Samandağ, Hatay. Prices in Turkish lira, VAT included.",
     },
     tr: {
       path: "/tr/menu/",
-      title: `Menü ve Fiyatlar${S} Samandağ`,
-      description: "Koordinat Coffee menüsü: espresso, Türk kahvesi, cold brew, kahvaltı, burger, makarna ve tatlılar. Samandağ'da güncel kafe fiyatları, TL ve KDV dahil.",
+      title: "Koordinat Coffee Menü ve Fiyatlar | Samandağ Cafe Menüsü",
+      description: "Koordinat Coffee (Koordinat Cafe) Samandağ menüsü: espresso, Türk kahvesi, cold brew, kahvaltı, burger, makarna, waffle ve tatlılar. Güncel fiyatlar, KDV dahil.",
     },
   },
   {
@@ -72,13 +96,27 @@ export const ROUTES: RouteDef[] = [
     key: "contact",
     en: {
       path: "/contact/",
-      title: `Contact & Directions${S} Samandağ`,
+      title: "Koordinat Coffee Contact & Directions | Samandağ Branches",
       description: `Addresses, directions, opening hours (daily ${OPEN}), phone and e-mail for both Koordinat Coffee branches in Samandağ, Hatay: Çiğdede and Atatürk.`,
     },
     tr: {
       path: "/tr/iletisim/",
-      title: `İletişim ve Yol Tarifi${S} Samandağ`,
+      title: "Koordinat Coffee İletişim ve Yol Tarifi | Samandağ Şubeleri",
       description: `Koordinat Coffee Samandağ şubeleri: Çiğdede ve Atatürk adresleri, yol tarifi, çalışma saatleri (her gün ${OPEN}), telefon, e-posta ve sık sorulan sorular.`,
+    },
+  },
+  ...BRANCH_ROUTES,
+  {
+    key: "guide",
+    en: {
+      path: "/samandag-guide/",
+      title: "Samandağ Travel Guide: Places to Visit & What to Eat | Koordinat Coffee",
+      description: "Things to do in Samandağ, Hatay: Titus Tunnel, Beşikli Cave, Çevlik, Vakıflı, the Moses Tree, Hızır Shrine and the turtle beach — plus what to eat and where to stop for coffee.",
+    },
+    tr: {
+      path: "/tr/samandag-rehberi/",
+      title: "Samandağ Gezilecek Yerler ve Ne Yenir? Rehber | Koordinat Coffee",
+      description: "Samandağ'da gezilecek yerler: Titus Tüneli, Beşikli Mağara, Çevlik, Vakıflı Köyü, Musa Ağacı, Hızır Makamı ve kaplumbağa sahili. Ne yenir, nerede kahve molası verilir?",
     },
   },
   {

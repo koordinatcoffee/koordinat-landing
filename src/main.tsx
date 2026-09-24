@@ -13,6 +13,8 @@ const PAGES: PageSet = {
   menu: lazy(() => import("./pages/MenuPage")),
   about: lazy(() => import("./pages/AboutPage")),
   contact: lazy(() => import("./pages/ContactPage")),
+  guide: lazy(() => import("./pages/GuidePage")),
+  branch: lazy(() => import("./pages/BranchPage")),
   legal: lazy(() => import("./pages/LegalPage")),
   notFound: lazy(() => import("./pages/NotFoundPage")),
 };

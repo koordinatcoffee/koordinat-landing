@@ -4,7 +4,9 @@ import { StrictMode, Suspense } from "react";
 import { renderToString } from "react-dom/server";
 import { App, type PageSet } from "./App";
 import AboutPage from "./pages/AboutPage";
+import BranchPage from "./pages/BranchPage";
 import ContactPage from "./pages/ContactPage";
+import GuidePage from "./pages/GuidePage";
 import HomePage from "./pages/HomePage";
 import LegalPage from "./pages/LegalPage";
 import MenuPage from "./pages/MenuPage";
@@ -17,6 +19,8 @@ const PAGES: PageSet = {
   menu: MenuPage,
   about: AboutPage,
   contact: ContactPage,
+  guide: GuidePage,
+  branch: BranchPage,
   legal: LegalPage,
   notFound: NotFoundPage,
 };

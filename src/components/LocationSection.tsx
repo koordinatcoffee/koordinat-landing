@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useCopy, useLang } from "../lib/i18n";
+import { useCopy, useHref, useLang } from "../lib/i18n";
 import { useState } from "react";
 import { useIsMobile } from "../lib/hooks";
 import { EASE_CINE, reveal } from "../lib/motion";
@@ -124,7 +124,10 @@ const COPY = {
     branch: "Branch",
     sea: "By the sea",
     directions: "Get directions",
+    page: "Branch page",
     follow: "Follow on Instagram",
+    // plain local copy — what people search for in Samandağ, written for people first
+    body: `Koordinat Coffee — some call it Koordinat Cafe — is a coffee house with two branches in Samandağ, Hatay: Koordinat Coffee Factory in Çiğdede, close to the sea, and Koordinat Coffee in Atatürk. Every day from ${hours.open} to ${hours.close}: espresso, filter and Turkish coffee, breakfast, burgers, pasta, waffles and desserts. Looking for a café in Samandağ for breakfast, a long study session or a late-night coffee? Both coordinates are open.`,
   },
   tr: {
     aria: "Şubeler",
@@ -138,13 +141,16 @@ const COPY = {
     branch: "Şube",
     sea: "Deniz tarafı",
     directions: "Yol tarifi al",
+    page: "Şube sayfası",
     follow: "Instagram'da takip et",
+    body: `Koordinat Coffee — ya da çoğu kişinin dediği gibi Koordinat Cafe — Samandağ'da iki şubeli bir kahve evi: denize yakın Çiğdede'de Koordinat Coffee Factory, Atatürk Mahallesi'nde Koordinat Coffee. Her gün ${hours.open}'den ${hours.close}'ye kadar espresso, filtre ve Türk kahvesi, kahvaltı, burger, makarna, waffle ve tatlılar. Samandağ'da kahvaltı, ders çalışmak ya da gece geç saatte oturmak için bir cafe arıyorsan, iki koordinat da açık.`,
   },
 };
 
 export function LocationSection() {
   const t = useCopy(COPY);
   const lang = useLang();
+  const href = useHref();
   const mobile = useIsMobile();
   const view = mobile ? VIEW_MOBILE : VIEW_DESKTOP;
   const [active, setActive] = useState<number | null>(null);
@@ -176,6 +182,9 @@ export function LocationSection() {
             <p className="display mt-2 text-[clamp(2.2rem,3.6vw,3.2rem)]">{hours.short}</p>
             <p className="micro mt-2 text-muted">{hours.days(lang)} · {t.week}</p>
           </motion.div>
+          <motion.p className="max-w-[760px] text-[15px] leading-[1.8] text-foam/70 md:col-span-8" {...reveal}>
+            {t.body}
+          </motion.p>
         </div>
 
         {/* map board */}
@@ -272,10 +281,13 @@ export function LocationSection() {
                 <br />
                 {b.postcode} Samandağ / Hatay
               </address>
-              <div className="mt-6">
+              <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-4">
                 <Pill href={b.mapsUrl} external>
                   {t.directions}
                 </Pill>
+                <TextLink href={href(b.route)} className="text-cream">
+                  {t.page}
+                </TextLink>
               </div>
             </motion.li>
           ))}

@@ -2,6 +2,7 @@
 // schema.org JSON-LD. Imported by vite.config.ts (build + dev), never by the app.
 import config from "../site.config.mjs";
 import { faqFor } from "./content/faq";
+import { guideFor } from "./content/guide";
 import { branches, company, menuFor, stores, telHref } from "./lib/site";
 import { LANGS, NOT_FOUND, pathFor, ROUTES, type Lang, type RouteDef, type RouteKey } from "./routes";
 
@@ -9,18 +10,20 @@ const SITE = config.siteUrl;
 const BRAND = "Koordinat Coffee";
 
 /**
- * Every way people write the name. Google uses these to tie partial and
- * variant searches ("koordinat", "koordinat kahve", "koordinat cafe" …) to one entity.
+ * Every way people write the name. Google uses these to tie partial and variant
+ * searches to one entity. Order follows Google autocomplete (TR, Sep 2026):
+ * "koordinat cafe" and "koordinat cafe samandağ" are typed most, then "koordinat coffee factory".
  */
 const ALT_NAMES = [
-  "Koordinat Coffee Factory",
-  "Koordinat",
-  "Koordinat Kahve",
   "Koordinat Cafe",
-  "Koordinat Kafe",
+  "Koordinat Cafe Samandağ",
+  "Koordinat Coffee Factory",
   "Koordinat Coffee Samandağ",
+  "Koordinat",
+  "Koordinat Kafe",
+  "Koordinat Kahve",
   "Koordinat Samandağ",
-  "Koordinat Coffee Hatay",
+  "Koordinat Cafe Hatay",
 ];
 
 const ID = {
@@ -39,6 +42,8 @@ const IMAGE: Partial<Record<RouteKey, string>> = {
   menu: "/media/menu-coffee.jpg",
   about: "/media/ritual.jpg",
   contact: "/media/final.jpg",
+  guide: "/media/place.jpg",
+  ...Object.fromEntries(branches.map((b) => [b.route, `/media/${b.video}.jpg`])),
 };
 const IMAGE_ALT: Record<Lang, string> = {
   en: "Koordinat Coffee — coffee house in Samandağ, Hatay",
@@ -114,7 +119,7 @@ function website(lang: Lang) {
     "@id": ID.site,
     url: url("/"),
     name: BRAND,
-    alternateName: ["Koordinat Coffee Factory", "Koordinat", "koordinatcoffee.com"],
+    alternateName: ["Koordinat Cafe", "Koordinat Coffee Factory", "Koordinat", "koordinatcoffee.com"],
     inLanguage: LANGS.map((l) => IN_LANGUAGE[l]),
     publisher: { "@id": ID.org },
     description:
@@ -131,13 +136,13 @@ function branchNodes(lang: Lang) {
     "@type": "CafeOrCoffeeShop",
     "@id": ID.branch(b.id),
     name: b.name,
-    alternateName: [`Koordinat Coffee ${b.area}`, `Koordinat ${b.area}`, `Koordinat Coffee Samandağ ${b.area}`],
+    alternateName: [`Koordinat Coffee ${b.area}`, `Koordinat Cafe ${b.area}`, `Koordinat ${b.area}`, `Koordinat Cafe Samandağ ${b.area}`],
     description:
       lang === "tr"
         ? `${b.name}, Samandağ ${b.area} şubesi. Espresso, filtre kahve, Türk kahvesi, cold brew, kahvaltı ve tatlılar; her gün ${config.hours.open}–${config.hours.close}.`
         : `${b.name}, ${b.area} branch in Samandağ. Espresso, filter coffee, Turkish coffee, cold brew, breakfast and desserts; open daily ${config.hours.open}–${config.hours.close}.`,
-    url: url(pathFor("contact", lang)),
-    image: ["/media/hero.jpg", "/media/place.jpg", "/media/final.jpg"].map(url),
+    url: url(pathFor(b.route, lang)),
+    image: [`/media/${b.video}.jpg`, "/media/hero.jpg", "/media/place.jpg"].map(url),
     logo: { "@id": ID.logo },
     ...(phoneIntl ? { telephone: phoneIntl } : {}),
     email: company.email,
@@ -202,6 +207,23 @@ function menu(lang: Lang, pageUrl: string) {
   };
 }
 
+function guide(lang: Lang, pageUrl: string) {
+  return {
+    "@type": "TouristDestination",
+    "@id": `${pageUrl}#destination`,
+    name: "Samandağ",
+    inLanguage: IN_LANGUAGE[lang],
+    containedInPlace: samandag.containedInPlace,
+    geo: { "@type": "GeoCoordinates", latitude: 36.08, longitude: 35.97 },
+    includesAttraction: guideFor(lang).places.map((p) => ({
+      "@type": "TouristAttraction",
+      name: p.name,
+      description: p.text,
+      url: `${pageUrl}#${p.id}`,
+    })),
+  };
+}
+
 function faq(lang: Lang, pageUrl: string) {
   return {
     "@type": "FAQPage",
@@ -219,7 +241,7 @@ function graph(lang: Lang, route: RouteDef) {
   const meta = route[lang];
   const pageUrl = url(meta.path);
   const home = route.key === "home";
-  const local = ["home", "menu", "about", "contact"].includes(route.key);
+  const local = ["home", "menu", "about", "contact", "guide"].includes(route.key) || Boolean(route.branch);
 
   const page = {
     "@type": PAGE_TYPE[route.key] ?? "WebPage",
@@ -233,6 +255,8 @@ function graph(lang: Lang, route: RouteDef) {
     primaryImageOfPage: { "@type": "ImageObject", url: url(IMAGE[route.key] ?? "/media/hero.jpg"), width: 1280, height: 720 },
     ...(home ? {} : { breadcrumb: { "@id": `${pageUrl}#breadcrumb` } }),
     ...(route.key === "menu" ? { mainEntity: { "@id": `${pageUrl}#menu` } } : {}),
+    ...(route.branch ? { mainEntity: { "@id": ID.branch(route.branch) } } : {}),
+    ...(route.key === "guide" ? { mainEntity: { "@id": `${pageUrl}#destination` } } : {}),
   };
 
   const nodes: object[] = [organization(lang), website(lang), page];
@@ -250,6 +274,7 @@ function graph(lang: Lang, route: RouteDef) {
   if (home || route.key === "about") nodes.push(app(lang));
   if (route.key === "menu") nodes.push(menu(lang, pageUrl));
   if (route.key === "contact") nodes.push(faq(lang, pageUrl));
+  if (route.key === "guide") nodes.push(guide(lang, pageUrl));
 
   // "<" escaped so no string can close the script tag
   return JSON.stringify({ "@context": "https://schema.org", "@graph": nodes }).replace(/</g, "\\u003c");

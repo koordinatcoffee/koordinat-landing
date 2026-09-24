@@ -12,6 +12,7 @@ const COPY = {
     about: "About",
     contact: "Contact",
     location: "Location",
+    guide: "Samandağ guide",
     visit: "Visit",
     directions: "Directions ↗",
     follow: "Follow",
@@ -32,6 +33,7 @@ const COPY = {
     about: "Hakkımızda",
     contact: "İletişim",
     location: "Konum",
+    guide: "Samandağ rehberi",
     visit: "Şubeler",
     directions: "Yol tarifi ↗",
     follow: "Takip et",
@@ -70,6 +72,7 @@ export function Footer() {
     { href: href("about"), label: t.about },
     { href: href("contact"), label: t.contact },
     { href: href("home", "location"), label: t.location },
+    { href: href("guide"), label: t.guide },
   ];
 
   return (
@@ -95,10 +98,10 @@ export function Footer() {
                 <ul className="grid gap-6 sm:grid-cols-2">
                   {branches.map((b) => (
                     <li key={b.id}>
-                      <p className="text-[14px] text-cream">
+                      <a href={href(b.route)} className="text-[14px] text-cream underline-offset-4 hover:underline">
                         <span className="micro mr-2 text-amber">{b.n}</span>
-                        {b.area}
-                      </p>
+                        {b.name} {b.area}
+                      </a>
                       <p className="mt-1.5 text-[13.5px] leading-relaxed text-cream/65">
                         {b.address}
                         <br />

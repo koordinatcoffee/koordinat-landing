@@ -234,7 +234,7 @@ export function HeroSection() {
               <p className="font-serif text-2xl leading-tight text-foam italic md:text-[1.7rem]">
                 {t.line}
               </p>
-              <p className="mt-3 max-w-[380px] text-[14px] leading-relaxed text-muted max-md:hidden">
+              <p className="mt-3 max-w-[380px] text-[13px] leading-relaxed text-muted md:text-[14px]">
                 {t.body}
               </p>
             </motion.div>

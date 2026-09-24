@@ -28,9 +28,9 @@ const COPY = {
     note: "All prices are in Turkish lira and include VAT. Menu and prices may change; the price shown in the app when you confirm your order is the one you pay. Ask our team about allergens.",
     order: "Order in the app",
     groups: [
-      { id: "coffee", title: "Coffee", line: "From the first espresso to the last cold brew.", img: "/media/menu-coffee.jpg", alt: "A cup of black coffee on roasted coffee beans" },
-      { id: "food", title: "Food", line: "Something warm to sit down with.", img: "/media/menu-food.jpg", alt: "A cheeseburger" },
-      { id: "sweet", title: "Sweet", line: "For the second coffee.", img: "/media/menu-sweet.jpg", alt: "Brownies with chocolate" },
+      { id: "coffee", title: "Coffee", line: "From the first espresso to the last cold brew.", img: "/media/menu-coffee.jpg", alt: "Coffee menu — a cup of black coffee on a bed of roasted coffee beans" },
+      { id: "food", title: "Food", line: "Something warm to sit down with.", img: "/media/menu-food.jpg", alt: "Food menu — a double cheeseburger against a dark background" },
+      { id: "sweet", title: "Sweet", line: "For the second coffee.", img: "/media/menu-sweet.jpg", alt: "Dessert menu — stacked brownie slices with chocolate poured over them" },
     ] as Group[],
   },
   tr: {
@@ -48,9 +48,9 @@ const COPY = {
     note: "Tüm fiyatlar Türk lirası cinsindendir ve KDV dahildir. Menü ve fiyatlar değişebilir; siparişi onayladığın anda uygulamada gösterilen fiyat geçerlidir. Alerjenler için ekibimize danışabilirsin.",
     order: "Uygulamadan sipariş ver",
     groups: [
-      { id: "coffee", title: "Kahve", line: "Sabahın ilk espressosundan son cold brew'a.", img: "/media/menu-coffee.jpg", alt: "Kavrulmuş kahve çekirdekleri üzerinde bir fincan sade kahve" },
-      { id: "food", title: "Yemek", line: "Oturup keyifle yenecek sıcak bir şey.", img: "/media/menu-food.jpg", alt: "Hamburger" },
-      { id: "sweet", title: "Tatlı", line: "İkinci kahvenin yanına.", img: "/media/menu-sweet.jpg", alt: "Çikolatalı brownie" },
+      { id: "coffee", title: "Kahve", line: "Sabahın ilk espressosundan son cold brew'a.", img: "/media/menu-coffee.jpg", alt: "Kahve menüsü — kavrulmuş kahve çekirdekleri üzerinde bir fincan sade kahve" },
+      { id: "food", title: "Yemek", line: "Oturup keyifle yenecek sıcak bir şey.", img: "/media/menu-food.jpg", alt: "Yemek menüsü — koyu arka plan önünde duble hamburger" },
+      { id: "sweet", title: "Tatlı", line: "İkinci kahvenin yanına.", img: "/media/menu-sweet.jpg", alt: "Tatlı menüsü — üzerine çikolata dökülen brownie dilimleri" },
     ] as Group[],
   },
 };

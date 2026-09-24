@@ -8,6 +8,8 @@ export type PageSet = {
   menu: ComponentType;
   about: ComponentType;
   contact: ComponentType;
+  guide: ComponentType;
+  branch: ComponentType<{ branchId: string }>;
   legal: ComponentType<{ routeKey: RouteKey }>;
   notFound: ComponentType;
 };
@@ -31,11 +33,22 @@ export function App({ pathname, pages }: { pathname: string; pages: PageSet }) {
   }, [key, lang]);
 
   const Component =
-    key === "home" || key === "menu" || key === "about" || key === "contact" ? pages[key] : undefined;
-  const { legal: LegalPage, notFound: NotFoundPage } = pages;
+    key === "home" || key === "menu" || key === "about" || key === "contact" || key === "guide" ? pages[key] : undefined;
+  const { legal: LegalPage, branch: BranchPage, notFound: NotFoundPage } = pages;
+  const page = !match ? (
+    <NotFoundPage />
+  ) : match.route.legal ? (
+    <LegalPage routeKey={match.route.key} />
+  ) : match.route.branch ? (
+    <BranchPage branchId={match.route.branch} />
+  ) : Component ? (
+    <Component />
+  ) : (
+    <NotFoundPage />
+  );
   return (
     <LangProvider lang={lang} routeKey={key}>
-      {!match ? <NotFoundPage /> : match.route.legal ? <LegalPage routeKey={match.route.key} /> : Component ? <Component /> : <NotFoundPage />}
+      {page}
     </LangProvider>
   );
 }

@@ -1,7 +1,6 @@
 import { MotionConfig } from "framer-motion";
 import type { ReactNode } from "react";
 import { useLang } from "../../lib/i18n";
-import { CoffeeCursor } from "../CoffeeCursor";
 import { Footer } from "../Footer";
 import { Navbar } from "../Navbar";
 import { PageCurtain } from "../transitions/PageCurtain";
@@ -25,7 +24,6 @@ export function SiteShell({ children, footerUnder }: Props) {
         {lang === "tr" ? "İçeriğe geç" : "Skip to content"}
       </a>
       <PageCurtain />
-      <CoffeeCursor />
       <Navbar />
       <main id="main">{children}</main>
       {footerUnder ? (
