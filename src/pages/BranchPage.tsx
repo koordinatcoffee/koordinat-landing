@@ -35,8 +35,8 @@ const COPY = {
     menu: "See the menu",
     call: "Phone",
     other: "Our other branch",
-    otherTitle: "Two coordinates,",
-    otherTitle2: "one Koordinat.",
+    otherTitle: "One Koordinat,",
+    otherTitle2: "two addresses.",
     otherBody: "Same menu, same prices, same app — pick the branch that is closer.",
     guide: "Exploring Samandağ?",
     guideBody: "Titus Tunnel, Çevlik, Vakıflı and the turtle beach — our guide to the area, with a coffee stop on the way.",
@@ -63,8 +63,8 @@ const COPY = {
     menu: "Menüyü gör",
     call: "Telefon",
     other: "Diğer şubemiz",
-    otherTitle: "İki koordinat,",
-    otherTitle2: "tek Koordinat.",
+    otherTitle: "Aynı Koordinat,",
+    otherTitle2: "iki adres.",
     otherBody: "Aynı menü, aynı fiyatlar, aynı uygulama — sana yakın olan şubeyi seç.",
     guide: "Samandağ'ı mı geziyorsun?",
     guideBody: "Titus Tüneli, Çevlik, Vakıflı ve kaplumbağa sahili — yolun üstünde bir kahve molasıyla Samandağ rehberimiz.",
@@ -94,7 +94,7 @@ export default function BranchPage({ branchId }: { branchId: string }) {
         lines={[
           <>
             {b.area}
-            <span className="sr-only"> — Samandağ, Hatay: </span>
+            <span className="sr-only"> — Samandağ, Hatay:</span>
           </>,
           <em key="n" className="text-amber italic">
             {b.name}

@@ -114,7 +114,7 @@ export function CoffeeExperienceSection() {
             </figcaption>
           </motion.figure>
 
-          <p className="micro mt-5 text-coffee/60">{t.drinks}</p>
+          <p className="micro mt-5 text-coffee">{t.drinks}</p>
         </div>
       </div>
     </section>

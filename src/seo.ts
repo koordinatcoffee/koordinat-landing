@@ -45,6 +45,15 @@ const IMAGE: Partial<Record<RouteKey, string>> = {
   guide: "/media/place.jpg",
   ...Object.fromEntries(branches.map((b) => [b.route, `/media/${b.video}.jpg`])),
 };
+/** Still frame of each page's hero video (PageHero) — preloaded as the LCP image. Keep in sync with the pages. */
+const HERO_STILL: Partial<Record<RouteKey, string>> = {
+  menu: "/media/pour.jpg",
+  about: "/media/ritual.jpg",
+  contact: "/media/final.jpg",
+  guide: "/media/place.jpg",
+  ...Object.fromEntries(branches.map((b) => [b.route, `/media/${b.video}.jpg`])),
+};
+
 const IMAGE_ALT: Record<Lang, string> = {
   en: "Koordinat Coffee — coffee house in Samandağ, Hatay",
   tr: "Koordinat Coffee — Samandağ, Hatay'da kahve evi",
@@ -212,7 +221,6 @@ function guide(lang: Lang, pageUrl: string) {
     "@type": "TouristDestination",
     "@id": `${pageUrl}#destination`,
     name: "Samandağ",
-    inLanguage: IN_LANGUAGE[lang],
     containedInPlace: samandag.containedInPlace,
     geo: { "@type": "GeoCoordinates", latitude: 36.08, longitude: 35.97 },
     includesAttraction: guideFor(lang).places.map((p) => ({
@@ -327,6 +335,16 @@ export function headTags(lang: Lang, route: RouteDef | null) {
     `<meta name="geo.position" content="${lat};${lng}" />`,
     `<meta name="ICBM" content="${lat}, ${lng}" />`,
   );
+
+  // LCP image: preload the hero still so it starts downloading before the stylesheet/JS
+  if (route?.key === "home") {
+    tags.push(
+      `<link rel="preload" as="image" href="/media/hero-mobile.jpg" media="(max-width: 767px)" fetchpriority="high" />`,
+      `<link rel="preload" as="image" href="/media/hero.jpg" media="(min-width: 768px)" fetchpriority="high" />`,
+    );
+  } else if (route && HERO_STILL[route.key]) {
+    tags.push(`<link rel="preload" as="image" href="${HERO_STILL[route.key]}" fetchpriority="high" />`);
+  }
 
   if (route) tags.push(`<script type="application/ld+json">${graph(lang, route)}</script>`);
   return tags.map((t) => `    ${t}`).join("\n");

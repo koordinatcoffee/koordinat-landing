@@ -40,6 +40,13 @@ npm run preview    # derlenmiş siteyi yerelde aç
 - **Meta, hreflang, Open Graph, JSON-LD, sitemap:** `src/seo.ts` — Organization, WebSite, 2 × CafeOrCoffeeShop,
   Menu, FAQPage, MobileApplication ve BreadcrumbList. Marka varyasyonları `ALT_NAMES` listesinde.
 - **SSS:** `src/content/faq.ts` — iletişim sayfasında görünür ve FAQPage verisine dönüşür.
+- **Şube sayfaları:** `/tr/subeler/<slug>/` ve `/branches/<slug>/`, `site.config.mjs` → `branches` içindeki
+  `slug`, `note`, `about` alanlarından üretilir. Google İşletme Profili'nde her şubenin "Web sitesi" alanına kendi
+  sayfasını yazın.
+- **Samandağ rehberi:** `src/content/guide.ts` → `/tr/samandag-rehberi/` ("samandağda gezilecek yerler" araması için).
+- **Anahtar kelime haritası:** `src/routes.ts` başındaki yorum (Google otomatik tamamlama + Trends, Eylül 2026).
+- **Ölçüm:** Vercel Web Analytics + Speed Insights (`src/main.tsx`, çerezsiz). Vercel → Project → Analytics ve
+  Speed Insights sekmelerinden **etkinleştirin**; yerelde `/_vercel/*` 404 vermesi normaldir.
 
 ## Yayınlama (Vercel)
 

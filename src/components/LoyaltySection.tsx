@@ -68,6 +68,7 @@ function Stamp({ index, filled, onFill }: { index: number; filled: boolean; onFi
       <span className="absolute inset-0 rounded-full border border-dashed border-cream/25" />
       <img
         src={PARROT}
+        loading="lazy"
         alt=""
         width="144"
         height="124"
@@ -88,7 +89,8 @@ function Stamp({ index, filled, onFill }: { index: number; filled: boolean; onFi
               exit={{ scale: 0.6, opacity: 0 }}
               transition={{ type: "spring", stiffness: 520, damping: 22 }}
             >
-              <img src={PARROT} alt="" width="144" height="124" className="w-[62%]" draggable={false} />
+              <img src={PARROT}
+        loading="lazy" alt="" width="144" height="124" className="w-[62%]" draggable={false} />
             </motion.span>
             {/* coffee ring */}
             <motion.span
@@ -184,6 +186,7 @@ export function LoyaltySection() {
             {/* big ghost parrot watermark */}
             <img
               src={PARROT}
+        loading="lazy"
               alt=""
               aria-hidden="true"
               className="pointer-events-none absolute -right-10 -bottom-12 w-[46%] opacity-[0.05]"

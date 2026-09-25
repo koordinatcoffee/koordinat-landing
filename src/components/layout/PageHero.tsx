@@ -29,11 +29,13 @@ export function PageHero({ eyebrow, code, lines, intro, meta = [], media, tall =
       {media && (
         <motion.div
           className="absolute inset-0"
-          initial={{ opacity: 0, scale: 1.08 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ scale: 1.08 }}
+          animate={{ scale: 1 }}
           transition={{ duration: 1.4, ease: EASE_CINE }}
         >
-          <LazyVideo eager src={media.src} poster={media.poster} className="h-full w-full object-cover" />
+          {/* real <img> under the video: paints without JS and serves as the LCP */}
+          <img src={media.poster} alt="" fetchPriority="high" className="absolute inset-0 h-full w-full object-cover" />
+          <LazyVideo eager src={media.src} className="relative h-full w-full object-cover" />
           <div className="absolute inset-0 bg-coffee/30 mix-blend-multiply" />
           <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/60 to-ink/40" />
         </motion.div>

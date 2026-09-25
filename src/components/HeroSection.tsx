@@ -44,10 +44,10 @@ function useLayer(mx: MotionValue<number>, my: MotionValue<number>, range: numbe
   };
 }
 
-const fadeUp = (delay: number, duration = 0.7) => ({
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration, ease: EASE_CINE, delay },
+/** CSS fade-up (index.css): runs from first paint, before JS — keeps the hero text a fast LCP. */
+const fadeUp = (delay: number, className = "") => ({
+  className: `k-fade-up ${className}`,
+  style: { animationDelay: `${delay}s` },
 });
 
 export function HeroSection() {
@@ -89,19 +89,29 @@ export function HeroSection() {
       aria-label="Koordinat Coffee Factory"
     >
       {/* 1 — video */}
+      {/* The still frame is a real <img> (preloaded in <head>, visible without JS) so it paints
+          at first render and counts as the LCP; the video fades in over it once it plays. */}
       <motion.div
         className="absolute -inset-4"
         style={parallax ? video : undefined}
-        initial={{ opacity: 0, scale: 1.08 }}
-        animate={{ opacity: 1, scale: 1 }}
+        initial={{ scale: 1.08 }}
+        animate={{ scale: 1 }}
         transition={{ duration: 1.4, ease: EASE_CINE }}
       >
+        <picture>
+          <source media="(max-width: 767px)" srcSet="/media/hero-mobile.jpg" />
+          <img
+            src="/media/hero.jpg"
+            alt=""
+            fetchPriority="high"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        </picture>
         <LazyVideo
           key={mobile ? "m" : "d"}
           eager
           src={mobile ? "/media/hero-mobile.mp4" : "/media/hero.mp4"}
-          poster={mobile ? "/media/hero-mobile.jpg" : "/media/hero.jpg"}
-          className="h-full w-full object-cover object-center"
+          className="relative h-full w-full object-cover object-center"
         />
       </motion.div>
 
@@ -206,15 +216,15 @@ export function HeroSection() {
         style={parallax ? type : undefined}
       >
         <div className="max-w-[1100px]">
-          <motion.p className="micro mb-6 flex items-center gap-3 text-foam/80" {...fadeUp(0.9)}>
+          <p {...fadeUp(0.45, "micro mb-6 flex items-center gap-3 text-foam/80")}>
             <span className="h-px w-8 bg-amber" aria-hidden="true" />
             Samandağ / Hatay
-          </motion.p>
+          </p>
 
           <RevealText
             as="h1"
             immediate
-            delay={1.05}
+            delay={0.6}
             duration={1.0}
             stagger={0.12}
             className="display text-[clamp(3.4rem,15vw,5.6rem)] text-cream md:text-[clamp(3.4rem,10.5vw,10.5rem)]"
@@ -230,20 +240,20 @@ export function HeroSection() {
           />
 
           <div className="mt-8 grid gap-8 md:mt-10 md:grid-cols-[minmax(0,420px)_auto] md:items-end md:gap-16">
-            <motion.div {...fadeUp(1.5)}>
+            <div {...fadeUp(1.05)}>
               <p className="font-serif text-2xl leading-tight text-foam italic md:text-[1.7rem]">
                 {t.line}
               </p>
               <p className="mt-3 max-w-[380px] text-[13px] leading-relaxed text-muted md:text-[14px]">
                 {t.body}
               </p>
-            </motion.div>
+            </div>
 
             <motion.div
               className="flex flex-wrap items-center gap-x-8 gap-y-3"
               initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, ease: EASE_CINE, delay: 1.7 }}
+              transition={{ duration: 0.7, ease: EASE_CINE, delay: 1.25 }}
             >
               <Pill href="#experience" ring>
                 {t.cta}

@@ -33,9 +33,12 @@ export const privacy: LegalDoc = {
         <>
           <h3>Website</h3>
           <p>
-            The Site is for information only; it has no accounts, forms or payments. No cookies, analytics or advertising
-            trackers are used. Our hosting provider may keep standard server logs — such as IP address, browser
-            information and time of access — for a short period for security and to keep the service running.
+            The Site is for information only; it has no accounts, forms or payments. No cookies or advertising trackers are
+            used. Our hosting provider, Vercel Inc., may keep standard server logs — such as IP address, browser
+            information and time of access — for a short period for security and to keep the service running. To
+            understand how the Site is used and how fast it loads, we use the cookie-free Vercel Web Analytics and Speed
+            Insights, which record anonymous, aggregated statistics (page viewed, referring site, country, device and
+            browser type, page load times); visitors are not identified and there is no cross-site tracking.
           </p>
           <h3>Mobile app</h3>
           <ul>
@@ -387,8 +390,8 @@ export const cookies: LegalDoc = {
   intro: <>Short, because there is not much to say.</>,
   summary: (
     <>
-      koordinatcoffee.com does not use cookies. There are no analytics, advertising or social media trackers — so there
-      is no cookie banner either.
+      koordinatcoffee.com does not use cookies. There are no advertising or social media trackers; only cookie-free,
+      anonymous visit and speed statistics are kept — so there is no cookie banner either.
     </>
   ),
   sections: [
@@ -410,6 +413,12 @@ export const cookies: LegalDoc = {
           <p>
             Our site is made of informational pages and <strong>sets no cookies</strong>. Fonts, images and videos are
             served from our own server; Google Analytics, Meta Pixel or similar third-party tracking tools are not used.
+          </p>
+          <p>
+            For visit and speed statistics we use our hosting provider’s <strong>Vercel Web Analytics</strong> and{" "}
+            <strong>Speed Insights</strong>. They set no cookies and store no persistent identifier in your browser; they
+            only produce anonymous, aggregated data (page viewed, referring site, country, device and browser type, page load
+            times).
           </p>
           <p>
             To play the transition between pages, the site writes a single technical entry to your browser’s session

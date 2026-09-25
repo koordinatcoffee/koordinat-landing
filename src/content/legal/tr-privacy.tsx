@@ -33,9 +33,12 @@ export const privacy: LegalDoc = {
         <>
           <h3>Web sitesi</h3>
           <p>
-            Site yalnızca bilgilendirme amaçlıdır; üyelik, form veya ödeme içermez. Sitede çerez, analitik veya reklam takip
-            aracı kullanılmaz. Barındırma (hosting) sağlayıcımız, güvenlik ve hizmetin çalışması amacıyla IP adresi,
-            tarayıcı bilgisi ve erişim zamanı gibi standart sunucu kayıtlarını kısa süreli tutabilir.
+            Site yalnızca bilgilendirme amaçlıdır; üyelik, form veya ödeme içermez. Sitede çerez veya reklam takip aracı
+            kullanılmaz. Barındırma (hosting) sağlayıcımız Vercel Inc., güvenlik ve hizmetin çalışması amacıyla IP adresi,
+            tarayıcı bilgisi ve erişim zamanı gibi standart sunucu kayıtlarını kısa süreli tutabilir. Sitenin nasıl
+            kullanıldığını ve ne kadar hızlı açıldığını anlamak için çerez kullanmayan Vercel Web Analytics ve Speed Insights
+            araçlarıyla anonim, toplu istatistikler (görüntülenen sayfa, yönlendiren site, ülke, cihaz ve tarayıcı türü, sayfa
+            yüklenme süreleri) tutulur; ziyaretçiler kimliklendirilmez ve siteler arası takip yapılmaz.
           </p>
           <h3>Mobil uygulama</h3>
           <ul>
@@ -386,8 +389,8 @@ export const cookies: LegalDoc = {
   intro: <>Kısa, çünkü söylenecek pek bir şey yok.</>,
   summary: (
     <>
-      koordinatcoffee.com çerez kullanmaz. Analitik, reklam veya sosyal medya takip aracı bulunmaz — bu yüzden çerez onay
-      penceresi de yoktur.
+      koordinatcoffee.com çerez kullanmaz. Reklam veya sosyal medya takip aracı bulunmaz; yalnızca çerezsiz, anonim ziyaret
+      ve hız istatistikleri tutulur — bu yüzden çerez onay penceresi de yoktur.
     </>
   ),
   sections: [
@@ -410,6 +413,12 @@ export const cookies: LegalDoc = {
             Sitemiz bilgilendirme amaçlı sayfalardan oluşur ve <strong>hiçbir çerez yerleştirmez</strong>. Yazı tipleri,
             görseller ve videolar kendi sunucumuzdan yüklenir; Google Analytics, Meta Pixel veya benzeri üçüncü taraf takip
             araçları kullanılmaz.
+          </p>
+          <p>
+            Ziyaret ve hız istatistikleri için barındırma sağlayıcımızın <strong>Vercel Web Analytics</strong> ve{" "}
+            <strong>Speed Insights</strong> araçları kullanılır. Bu araçlar çerez yerleştirmez ve tarayıcına kalıcı bir
+            tanımlayıcı kaydetmez; yalnızca anonim ve toplu veriler (görüntülenen sayfa, yönlendiren site, ülke, cihaz ve
+            tarayıcı türü, sayfa yüklenme süreleri) üretir.
           </p>
           <p>
             Sayfalar arası geçiş animasyonunu oynatmak için site, tarayıcının oturum deposuna (session storage) tek bir teknik

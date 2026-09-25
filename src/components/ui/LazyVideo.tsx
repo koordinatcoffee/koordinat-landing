@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from "react";
 
 type Props = {
   src: string;
-  poster: string;
+  /** Omit when a separate <img> behind the video shows the first frame (heroes, for a fast LCP). */
+  poster?: string;
   className?: string;
   /** Hero only: load immediately with preload="auto". */
   eager?: boolean;

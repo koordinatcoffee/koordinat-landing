@@ -164,8 +164,8 @@ export const ROUTES: RouteDef[] = [
   {
     key: "cookies",
     legal: true,
-    en: { path: "/cookies/", title: `Cookie Policy${S}`, description: "koordinatcoffee.com does not use cookies, analytics or advertising trackers." },
-    tr: { path: "/tr/cerez-politikasi/", title: `Çerez Politikası${S}`, description: "koordinatcoffee.com çerez, analitik veya reklam takibi kullanmaz." },
+    en: { path: "/cookies/", title: `Cookie Policy${S}`, description: "koordinatcoffee.com uses no cookies or advertising trackers — only cookie-free, anonymous visit and speed statistics." },
+    tr: { path: "/tr/cerez-politikasi/", title: `Çerez Politikası${S}`, description: "koordinatcoffee.com çerez veya reklam takibi kullanmaz; yalnızca çerezsiz, anonim ziyaret ve hız istatistikleri tutulur." },
   },
   {
     key: "terms",
