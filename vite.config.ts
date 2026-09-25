@@ -6,6 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 import config from "./site.config.mjs";
 import { findRoute, LANGS, ROUTES, type Lang, type RouteDef } from "./src/routes";
 import { headTags, sitemap } from "./src/seo";
+import { appDownloadHtml } from "./src/app-download";
 
 /** Per-page <head>: the language attribute plus everything from src/seo.ts. */
 function withMeta(html: string, lang: Lang, route: RouteDef | null) {
@@ -38,6 +39,21 @@ function pages(): Plugin {
             `Sitede gizleniyorlar; PayTR başvurusundan önce doldurun.`,
         );
       }
+      // /app-download device redirects live in vercel.json — keep them equal to site.config.mjs → stores
+      const redirects = JSON.parse(readFileSync("vercel.json", "utf8")).redirects as { source: string; destination: string }[];
+      const targets = new Set(redirects.filter((r) => r.source.startsWith("/app-download")).map((r) => r.destination));
+      const expected = [config.stores.appStore, config.stores.googlePlay];
+      if (targets.size !== 2 || !expected.every((u) => targets.has(u))) {
+        this.warn("vercel.json: /app-download yönlendirmeleri site.config.mjs → stores ile aynı değil. İkisini de güncelleyin.");
+      }
+    },
+    // dev: serve the /app-download/ fallback page (built as a static file below)
+    configureServer(server) {
+      server.middlewares.use((req, res, next) => {
+        if (!/^\/app-download\/?$/.test((req.url ?? "").split("?")[0])) return next();
+        res.setHeader("Content-Type", "text/html; charset=utf-8");
+        res.end(appDownloadHtml());
+      });
     },
     // dev: correct <title>/description per route as well
     transformIndexHtml(html, ctx) {
@@ -58,6 +74,8 @@ function pages(): Plugin {
         }
       }
       writeFileSync(join(outDir, "404.html"), withMeta(base, "en", null));
+      mkdirSync(join(outDir, "app-download"), { recursive: true });
+      writeFileSync(join(outDir, "app-download", "index.html"), appDownloadHtml());
       writeFileSync(join(outDir, "sitemap.xml"), sitemap(new Date().toISOString().slice(0, 10)));
       writeFileSync(join(outDir, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${config.siteUrl}/sitemap.xml\n`);
     },

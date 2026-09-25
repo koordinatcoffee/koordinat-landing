@@ -48,6 +48,17 @@ npm run preview    # derlenmiş siteyi yerelde aç
 - **Ölçüm:** Vercel Web Analytics + Speed Insights (`src/main.tsx`, çerezsiz). Vercel → Project → Analytics ve
   Speed Insights sekmelerinden **etkinleştirin**; yerelde `/_vercel/*` 404 vermesi normaldir.
 
+## Uygulama indirme linki: `/app-download`
+
+QR kod, afiş ve Instagram biyografisi için tek link: **koordinatcoffee.com/app-download**
+
+- iPhone / iPad → App Store, Android → Google Play: `vercel.json` içindeki `has` (user-agent) yönlendirmeleri,
+  sunucuda, anında (307).
+- Diğer cihazlar (masaüstü, kendini Mac olarak tanıtan iPad'ler) → iki mağaza butonlu yedek sayfa
+  (`src/app-download.ts`); iPad'i JavaScript ile ayrıca algılar. Arama motorlarında indekslenmez.
+- Mağaza linkleri `site.config.mjs` → `stores` **ve** `vercel.json` içinde. Biri değişirse ikisini de güncelleyin;
+  farklı olurlarsa build uyarı verir.
+
 ## Yayınlama (Vercel)
 
 `vercel.json` hazır: build `npm run build`, çıktı `dist`. Eski Türkçe adresler (`/gizlilik/`, `/kvkk/` …) yeni

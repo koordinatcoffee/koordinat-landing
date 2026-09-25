@@ -5,6 +5,54 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/app-download",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(iPhone|iPad|iPod).*"
+        }
+      ],
+      "destination": "https://apps.apple.com/tr/app/id6788413238",
+      "permanent": false
+    },
+    {
+      "source": "/app-download",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*Android.*"
+        }
+      ],
+      "destination": "https://play.google.com/store/apps/details?id=com.koordinat.coffeeapp",
+      "permanent": false
+    },
+    {
+      "source": "/app-download/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(iPhone|iPad|iPod).*"
+        }
+      ],
+      "destination": "https://apps.apple.com/tr/app/id6788413238",
+      "permanent": false
+    },
+    {
+      "source": "/app-download/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*Android.*"
+        }
+      ],
+      "destination": "https://play.google.com/store/apps/details?id=com.koordinat.coffeeapp",
+      "permanent": false
+    },
+    {
       "source": "/hakkimizda",
       "destination": "/tr/hakkimizda/",
       "permanent": true
