@@ -52,12 +52,18 @@ npm run preview    # derlenmiş siteyi yerelde aç
 
 QR kod, afiş ve Instagram biyografisi için tek link: **koordinatcoffee.com/app-download**
 
-- iPhone / iPad → App Store, Android → Google Play: `vercel.json` içindeki `has` (user-agent) yönlendirmeleri,
-  sunucuda, anında (307).
-- Diğer cihazlar (masaüstü, kendini Mac olarak tanıtan iPad'ler) → iki mağaza butonlu yedek sayfa
-  (`src/app-download.ts`); iPad'i JavaScript ile ayrıca algılar. Arama motorlarında indekslenmez.
-- Mağaza linkleri `site.config.mjs` → `stores` **ve** `vercel.json` içinde. Biri değişirse ikisini de güncelleyin;
-  farklı olurlarsa build uyarı verir.
+Telefonda mağazanın web sayfasını değil, doğrudan **mağaza uygulamasını** açar (`vercel.json`, sunucuda, 307):
+
+| Cihaz / tarayıcı | Açılan |
+|---|---|
+| Android (Chrome, Samsung, Instagram, Facebook, TikTok…) | Play Store uygulaması (`intent://`, yoksa web) |
+| Android, diğer uygulama içi tarayıcılar | Google Play web sayfası |
+| iPhone/iPad Safari | App Store uygulaması (`https` linki) |
+| iPhone/iPad Instagram, Facebook, TikTok, Chrome… | App Store uygulaması (`itms-apps://`) |
+| Masaüstü, kendini Mac gibi tanıtan iPad | Yedek sayfa (`src/app-download.ts`); iPad'i JS ile algılayıp App Store'a gönderir |
+
+- Linkler `src/app-download.ts` → `storeLinks()` ile `site.config.mjs` → `stores`'tan üretilir; `vercel.json`'daki
+  kurallar bunlarla birebir aynı olmalı (farklıysa build uyarı verir). Sıra önemli: Vercel ilk eşleşen kuralı uygular.
 
 ## Yayınlama (Vercel)
 

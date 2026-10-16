@@ -1,15 +1,39 @@
-// /app-download/ — one link for QR codes, posters and bios that opens the right app store.
-// iPhone/iPad → App Store and Android → Google Play are redirected by Vercel (vercel.json, "has"
-// user-agent rules) before this page is ever served. This page is the fallback: desktops, iPads
-// that report a Mac user agent, and local preview. It re-checks the device in JS and otherwise
-// shows both store buttons. Written to dist/ by vite.config.ts (and served in dev).
+// /app-download/ — one link for QR codes, posters and bios that opens the store APP (not the
+// store's web page) on the visitor's phone. Vercel redirects phones before this page is served
+// (vercel.json, "has" user-agent rules — keep them equal to storeLinks(); the build checks):
+//   Android (any browser, incl. Instagram/Facebook)    → intent:// → Play Store app (web fallback)
+//   iPhone/iPad in-app browsers + Chrome/Firefox/Edge   → itms-apps:// → App Store app
+//   iPhone/iPad Safari                                  → https App Store link (Safari opens the app)
+// This page is the fallback: desktops, iPads that report a Mac user agent, local preview. It
+// re-checks the device in JS and otherwise shows both store buttons. Written to dist/ by vite.config.ts.
 import config from "../site.config.mjs";
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
 
+/** In-app browsers and non-Safari iOS browsers: https store links open the web page there, not the app. */
+export const IOS_NON_SAFARI = "CriOS|FxiOS|EdgiOS|OPT/|Instagram|FBAN|FBAV|FBIOS|musical_ly|TikTok|Snapchat|LinkedInApp|Twitter|Pinterest";
+
+/** Android apps whose in-app browser hands intent:// links to the system (others' WebViews get https). */
+export const ANDROID_IN_APP = "Instagram|FBAN|FBAV|FB_IAB|FB4A|musical_ly|TikTok|trill|Snapchat|LinkedInApp|Twitter|Pinterest";
+
+/** Every store URL the redirects use, derived from site.config.mjs → stores. */
+export function storeLinks() {
+  const { appStore, googlePlay } = config.stores;
+  const pkg = new URL(googlePlay).searchParams.get("id");
+  return {
+    ios: appStore,
+    /** opens the App Store app directly */
+    iosApp: appStore.replace(/^https:\/\//, "itms-apps://"),
+    android: googlePlay,
+    /** opens the Play Store app directly; browsers without Play fall back to the web page */
+    androidApp: `intent://details?id=${pkg}#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=${encodeURIComponent(googlePlay)};end`,
+  };
+}
+
 export function appDownloadHtml() {
-  const ios = esc(config.stores.appStore);
-  const android = esc(config.stores.googlePlay);
+  const links = storeLinks();
+  const ios = esc(links.ios);
+  const android = esc(links.android);
   return `<!doctype html>
 <html lang="tr">
   <head>
@@ -27,8 +51,10 @@ export function appDownloadHtml() {
         // iPadOS Safari identifies as a Mac; a touch screen gives it away
         var isIos = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
         var isAndroid = /Android/i.test(ua);
-        if (isIos) location.replace("${ios}");
-        else if (isAndroid) location.replace("${android}");
+        if (isIos) location.replace(/${IOS_NON_SAFARI.replace(/\//g, "\\/")}/.test(ua) ? ${JSON.stringify(links.iosApp)} : ${JSON.stringify(links.ios)});
+        // same rules as vercel.json: generic WebViews may not handle intent:// — they get the web page
+        else if (isAndroid)
+          location.replace(/${ANDROID_IN_APP}/.test(ua) || !/; wv\\)/.test(ua) ? ${JSON.stringify(links.androidApp)} : ${JSON.stringify(links.android)});
       })();
     </script>
     <style>

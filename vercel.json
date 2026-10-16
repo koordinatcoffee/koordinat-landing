@@ -5,19 +5,31 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/app-download",
+      "source": "/app-download/",
       "has": [
         {
           "type": "header",
           "key": "user-agent",
-          "value": ".*(iPhone|iPad|iPod).*"
+          "value": ".*Android.*(Instagram|FBAN|FBAV|FB_IAB|FB4A|musical_ly|TikTok|trill|Snapchat|LinkedInApp|Twitter|Pinterest).*"
         }
       ],
-      "destination": "https://apps.apple.com/tr/app/id6788413238",
+      "destination": "intent://details?id=com.koordinat.coffeeapp#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.koordinat.coffeeapp;end",
       "permanent": false
     },
     {
-      "source": "/app-download",
+      "source": "/app-download/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*Android.*; wv\\).*"
+        }
+      ],
+      "destination": "https://play.google.com/store/apps/details?id=com.koordinat.coffeeapp",
+      "permanent": false
+    },
+    {
+      "source": "/app-download/",
       "has": [
         {
           "type": "header",
@@ -25,7 +37,19 @@
           "value": ".*Android.*"
         }
       ],
-      "destination": "https://play.google.com/store/apps/details?id=com.koordinat.coffeeapp",
+      "destination": "intent://details?id=com.koordinat.coffeeapp#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.koordinat.coffeeapp;end",
+      "permanent": false
+    },
+    {
+      "source": "/app-download/",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(iPhone|iPad|iPod).*(CriOS|FxiOS|EdgiOS|OPT/|Instagram|FBAN|FBAV|FBIOS|musical_ly|TikTok|Snapchat|LinkedInApp|Twitter|Pinterest).*"
+        }
+      ],
+      "destination": "itms-apps://apps.apple.com/tr/app/id6788413238",
       "permanent": false
     },
     {
@@ -41,7 +65,31 @@
       "permanent": false
     },
     {
-      "source": "/app-download/",
+      "source": "/app-download",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*Android.*(Instagram|FBAN|FBAV|FB_IAB|FB4A|musical_ly|TikTok|trill|Snapchat|LinkedInApp|Twitter|Pinterest).*"
+        }
+      ],
+      "destination": "intent://details?id=com.koordinat.coffeeapp#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.koordinat.coffeeapp;end",
+      "permanent": false
+    },
+    {
+      "source": "/app-download",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*Android.*; wv\\).*"
+        }
+      ],
+      "destination": "https://play.google.com/store/apps/details?id=com.koordinat.coffeeapp",
+      "permanent": false
+    },
+    {
+      "source": "/app-download",
       "has": [
         {
           "type": "header",
@@ -49,7 +97,31 @@
           "value": ".*Android.*"
         }
       ],
-      "destination": "https://play.google.com/store/apps/details?id=com.koordinat.coffeeapp",
+      "destination": "intent://details?id=com.koordinat.coffeeapp#Intent;scheme=market;package=com.android.vending;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.koordinat.coffeeapp;end",
+      "permanent": false
+    },
+    {
+      "source": "/app-download",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(iPhone|iPad|iPod).*(CriOS|FxiOS|EdgiOS|OPT/|Instagram|FBAN|FBAV|FBIOS|musical_ly|TikTok|Snapchat|LinkedInApp|Twitter|Pinterest).*"
+        }
+      ],
+      "destination": "itms-apps://apps.apple.com/tr/app/id6788413238",
+      "permanent": false
+    },
+    {
+      "source": "/app-download",
+      "has": [
+        {
+          "type": "header",
+          "key": "user-agent",
+          "value": ".*(iPhone|iPad|iPod).*"
+        }
+      ],
+      "destination": "https://apps.apple.com/tr/app/id6788413238",
       "permanent": false
     },
     {

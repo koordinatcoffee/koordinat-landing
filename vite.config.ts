@@ -6,7 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 import config from "./site.config.mjs";
 import { findRoute, LANGS, ROUTES, type Lang, type RouteDef } from "./src/routes";
 import { headTags, sitemap } from "./src/seo";
-import { appDownloadHtml } from "./src/app-download";
+import { appDownloadHtml, storeLinks } from "./src/app-download";
 
 /** Per-page <head>: the language attribute plus everything from src/seo.ts. */
 function withMeta(html: string, lang: Lang, route: RouteDef | null) {
@@ -39,11 +39,11 @@ function pages(): Plugin {
             `Sitede gizleniyorlar; PayTR başvurusundan önce doldurun.`,
         );
       }
-      // /app-download device redirects live in vercel.json — keep them equal to site.config.mjs → stores
+      // /app-download device redirects live in vercel.json — keep them equal to storeLinks() (site.config.mjs → stores)
       const redirects = JSON.parse(readFileSync("vercel.json", "utf8")).redirects as { source: string; destination: string }[];
       const targets = new Set(redirects.filter((r) => r.source.startsWith("/app-download")).map((r) => r.destination));
-      const expected = [config.stores.appStore, config.stores.googlePlay];
-      if (targets.size !== 2 || !expected.every((u) => targets.has(u))) {
+      const expected = Object.values(storeLinks());
+      if (targets.size !== expected.length || !expected.every((u) => targets.has(u))) {
         this.warn("vercel.json: /app-download yönlendirmeleri site.config.mjs → stores ile aynı değil. İkisini de güncelleyin.");
       }
     },
